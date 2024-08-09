@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="form-wrapper">
+      <h2>Date Range Filter</h2>
+      <p>Use the date range picker below to filter the data according to your selected range. This tool allows you to choose a custom date range or select from predefined ranges.</p>
+  
+      <form [formGroup]="dateRangeForm" class="date-range-form">
+        <div class="form-group">
+          <label for="daterange" class="form-label">Select Date Range</label>
+          <input
+            type="text"
+            class="form-control"
+            ngxDaterangepickerMd
+            [ranges]="ranges"
+            formControlName="selected"
+            [alwaysShowCalendars]="true"
+            [keepCalendarOpeningWithRange]="true"
+            [showRangeLabelOnInput]="true"
+            placeholder="Select a date range"
+           
+          />
+        </div>
+      </form>
+      
+  
+      <div class="filtered-data">
+        <h3>Filtered Data:</h3>
+        <ul>
+          <li *ngFor="let item of filteredData">
+            <strong>Date:</strong> {{ item.date }} - <strong>Value:</strong> {{ item.value }}
+          </li>
+        </ul>
+        <p *ngIf="filteredData.length === 0">No data available for the selected date range.</p>
+      </div>
+    </div>
+  </div>
+  
